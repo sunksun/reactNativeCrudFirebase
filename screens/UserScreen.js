@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View, Text } from 'react-native';
-import { Badge, ListItem } from 'react-native-elements';
+import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput } from 'react-native';
+import { ListItem, SearchBar } from 'react-native-elements';
 import { db } from '../database/firebaseDb';
 import { collection, onSnapshot } from 'firebase/firestore';
 
@@ -9,7 +9,8 @@ class UserScreen extends Component {
         super(props);
         this.state = {
             isLoading: true,
-            userArr: []
+            userArr: [],
+            search: '',
         };
         this.firestoreRef = collection(db, 'react-native-crud');
     }
@@ -19,9 +20,7 @@ class UserScreen extends Component {
     }
 
     componentWillUnmount() {
-        if (this.unsubscribe) {
-            this.unsubscribe();
-        }
+        this.unsubscribe();
     }
 
     getCollection = (querySnapshot) => {
@@ -32,13 +31,16 @@ class UserScreen extends Component {
         this.setState({ userArr, isLoading: false });
     }
 
-    renderUserItem = ({ item, index }) => (
+    updateSearch = (search) => {
+        this.setState({ search });
+    }
+
+    renderUserItem = ({ item }) => (
         <ListItem
             key={item.key}
             bottomDivider
             onPress={() => this.props.navigation.navigate('UserDetailScreen', { userKey: item.key })}
         >
-            <Badge value={index + 1} />
             <ListItem.Content>
                 <ListItem.Title>{item.name}</ListItem.Title>
                 <ListItem.Subtitle>{item.email}</ListItem.Subtitle>
@@ -56,16 +58,34 @@ class UserScreen extends Component {
             );
         }
 
+        const { search } = this.state;
+        const filteredUsers = this.state.userArr.filter(user => 
+            user.name.toLowerCase().includes(search.toLowerCase()) ||
+            user.email.toLowerCase().includes(search.toLowerCase())
+        );
+
         return (
-            <ScrollView style={styles.container}>
-                {this.state.userArr.map((item, index) => this.renderUserItem({ item, index }))}
-            </ScrollView>
+            <View style={styles.container}>
+                <SearchBar
+                    placeholder="Search by name or email..."
+                    onChangeText={this.updateSearch}
+                    value={search}
+                    lightTheme
+                    round
+                />
+                <ScrollView style={styles.scrollView}>
+                    {filteredUsers.map((item, index) => this.renderUserItem({ item, index }))}
+                </ScrollView>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+    },
+    scrollView: {
         flex: 1,
         paddingBottom: 22
     },

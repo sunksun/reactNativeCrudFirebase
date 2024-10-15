@@ -83,12 +83,7 @@ class AddUserScreen extends Component {
                         onPress={() => this.props.navigation.navigate('UserScreen')}
                         containerStyle={styles.buttonContainer}
                     />
-                    <Button
-                        title='User Detail'
-                        onPress={() => this.props.navigation.navigate('UserDetailScreen')}
-                        containerStyle={styles.buttonContainer}
-                        buttonStyle={styles.detailButton}
-                    />
+                    
                 </ScrollView>
             </ThemeProvider>
         );

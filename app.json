@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "reactNativeCrudFirebase",
+    "name": "ProjectTracking",
     "slug": "reactNativeCrudFirebase",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "ProjectTracking",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -14,14 +14,16 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.reactnativecrudfirebase"
+      "bundleIdentifier": "com.sunksun.projecttracking"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.yourcompany.reactnativecrudfirebase"
+      "package": "com.sunksun.reactnativecrudfirebase",
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 2
     },
     "web": {
       "bundler": "metro",
@@ -38,8 +40,9 @@
     "entryPoint": "./App.js",
     "extra": {
       "eas": {
-        "projectId": "your-eas-project-id"
+        "projectId": "99deee8a-848e-4d40-b3b8-53cc7cc4caa7"
       }
-    }
+    },
+    "owner": "sunksun"
   }
 }

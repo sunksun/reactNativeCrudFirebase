@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "495660244334",
+    "project_id": "react-native-crud-26cf5",
+    "storage_bucket": "react-native-crud-26cf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495660244334:android:d6e67ca59daf22be7e357f",
+        "android_client_info": {
+          "package_name": "com.sunksun.reactnativecrudfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpnPAF3rLDUVQ9CSRJxj_EsYyOXDBXgW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
